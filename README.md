@@ -1,3 +1,8 @@
+## Intro
+This project is experimenting with using Trello as a CMS
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
