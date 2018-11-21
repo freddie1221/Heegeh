@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import '../style/App.css';
+import Card from './Card';
+
 
 const listId = process.env.REACT_APP_TRELLO_LIST_ID
 const token = process.env.REACT_APP_TRELLO_API_TOKEN
@@ -11,49 +11,40 @@ const url = `https://api.trello.com/1/lists/${listId}/cards?${cardParameters}&ke
 class App extends Component {
   constructor(props){
     super(props)
-
     this.state = {
       cards: []
     }
   }
-
-  // so perhaps I want to store the returned object against component state
-
+  // so perhaps I want to store the returned object against component state. Yep.
   componentDidMount() {
-    const that = this
     fetch(url)
     .catch(error => console.log('BAD', error))
-	  .then(function (response) {
-		  return response.json();
+    .then(response => {
+      return response.json()
     })
-    .then(function (data) {
-      // console.log(data)
-      that.setState({cards: data})
+    .then(data => {
+      this.setState({cards: data})
+      console.log(this.state.cards[0])
     })
-    console.log(that.cards)
   }
 
   render() {
+    // const appStyle = {
+    //   maxWidth: "1200px",
+    //   margin: "auto"
+    // }
     return (
-      <div className="App">
-        <header className="App-header">
-          
-          <p>
-            The List ID is {process.env.REACT_APP_TRELLO_LIST_ID} <br/>
-            The Token is {process.env.REACT_APP_TRELLO_API_TOKEN}
-          </p>
-        </header>
+      <div>
+          {this.state.cards.map((card) => {
+            return <Card key={card.id} title={card.name} body={card.desc} />
+            })
+          }
+        
       </div>
     );
   }
 }
 
-// So I want this component to...
-// Make an API call
-// With each 'object' returned in the response, load a card component, passing in the relevant props(?)
-
-// I question I have is, when do I make the fetch call.. hmm...
-// perhaps componentDidMount or something like that
 
 
 export default App;
