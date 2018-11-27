@@ -15,7 +15,7 @@ class App extends Component {
       cards: []
     }
   }
-  // so perhaps I want to store the returned object against component state. Yep.
+  
   componentDidMount() {
     fetch(url)
     .catch(error => console.log('BAD', error))
@@ -29,17 +29,12 @@ class App extends Component {
   }
 
   render() {
-    // const appStyle = {
-    //   maxWidth: "1200px",
-    //   margin: "auto"
-    // }
     return (
-      <div>
+      <div className="wrapper">
           {this.state.cards.map((card) => {
             return <Card key={card.id} title={card.name} body={card.desc} />
             })
           }
-        
       </div>
     );
   }

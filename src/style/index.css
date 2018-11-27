@@ -10,11 +10,12 @@ code {
   font-family: 'nunito sans', sans-serif;
 }
 
-#root {
+.wrapper {
   padding: 50px;
   background-color: #FFF;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  /* grid-template-rows: 50px 50px; */
   grid-gap: 20px;
-  height: 100%;
+  /* height: 100%; */
 }
