@@ -15,7 +15,10 @@ code {
   background-color: #FFF;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  /* grid-template-rows: 50px 50px; */
   grid-gap: 20px;
-  /* height: 100%; */
+}
+
+h1 {
+  font-family: 'Montserrat';
+  font-size: 18px;
 }
